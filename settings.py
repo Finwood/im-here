@@ -9,7 +9,7 @@ ENDPOINTS_CONFIG_FILE = 'endpoints.yaml'
 
 
 # make API available at `/api/`
-URL_PREFIX = 'api'
+# URL_PREFIX = 'api'
 
 # Heroku support
 if 'MONGODB_URI' in os.environ:
@@ -17,9 +17,9 @@ if 'MONGODB_URI' in os.environ:
 else:
     MONGO_HOST = 'localhost'
     MONGO_PORT = 27017
-    MONGO_USERNAME = 'user'
-    MONGO_PASSWORD = 'user'
-    MONGO_DBNAME = 'apitest'
+    MONGO_USERNAME = ''
+    MONGO_PASSWORD = ''
+    MONGO_DBNAME = 'eve'
 
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
