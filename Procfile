@@ -1,4 +1,4 @@
 # Heroku Procfile
 
-# something like this
-# web: gunicorn run:app
+# use the `main` module's `app` object
+web: gunicorn main:app
