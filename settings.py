@@ -9,7 +9,7 @@ ENDPOINTS_CONFIG_FILE = 'endpoints.yaml'
 
 
 # make API available at `/api/`
-# URL_PREFIX = 'api'
+URL_PREFIX = 'api'
 
 # Heroku support
 if 'MONGODB_URI' in os.environ:
