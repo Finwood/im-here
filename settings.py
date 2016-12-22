@@ -8,17 +8,12 @@ import yaml
 ENDPOINTS_CONFIG_FILE = 'endpoints.yaml'
 
 
+# make API available at `/api/`
+URL_PREFIX = 'api'
+
 # Heroku support
-MONGODB_URI = os.environ.get('MONGODB_URI')
-if MONGODB_URI:
-    match = re.match(r'^mongodb://(?P<username>.+):(?P<password>.+)' \
-                     r'@(?P<host>.+):(?P<port>\d+)/(?P<dbname>.+)$',
-                     MONGODB_URI)
-    MONGO_HOST = match.group('host')
-    MONGO_PORT = match.group('port')
-    MONGO_USERNAME = match.group('username')
-    MONGO_PASSWORD = match.group('password')
-    MONGO_DBNAME = match.group('dbname')
+if 'MONGODB_URI' in os.environ:
+    MONGO_URI = os.environ['MONGODB_URI']
 else:
     MONGO_HOST = 'localhost'
     MONGO_PORT = 27017

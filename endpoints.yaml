@@ -1,5 +1,6 @@
 feedback:
-    item_title: Position Feedback
+    resource_title: position feedback records
+    item_title: posititon feedback record
     schema:
         tstamp:
             type: integer
