@@ -2,20 +2,12 @@ feedback:
     resource_title: position feedback records
     item_title: posititon feedback record
     schema:
-        tstamp:
-            type: integer
-            required: true
-            min: 0
         user:
             type: string
             required: true
-            maxlength: 80
         lat:
             type: float
             required: true
         lon:
             type: float
-            required: true
-        value:
-            type: integer
             required: true
