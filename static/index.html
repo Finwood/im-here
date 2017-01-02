@@ -1,0 +1,26 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>I'm HERE - Web Interface</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+    <div class="feed-container">
+      <div class="card">
+        <p class="ip">{{item.ip}}</p>
+        <p class="timestamp">{{item.timestamp}}</p>
+        <div [ngClass]="{'ball-red': item.indicator === 0, 'ball-yellow': item.indicator === 1,
+         'ball-green': item.indicator === 2}"></div>
+        <p class="lon">lon: {{item.lon}}</p>
+        <p class="lat">lat: {{item.lat}}</p>
+      </div>
+    </div>
+</body>
+</html>
