@@ -11,6 +11,8 @@ ENDPOINTS_CONFIG_FILE = 'endpoints.yaml'
 # make API available at `/api/`
 URL_PREFIX = 'api'
 
+DEBUG = os.environ.get('DEBUG', False)
+
 # Heroku support
 if 'MONGODB_URI' in os.environ:
     MONGO_URI = os.environ['MONGODB_URI']
@@ -31,11 +33,12 @@ RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
 # (defaults to read-only item access).
 ITEM_METHODS = ['GET', 'DELETE']
 
-# We enable standard client cache directives for all resources exposed by the
-# API. We can always override these global settings later.
-CACHE_CONTROL = 'max-age=60'
-CACHE_EXPIRES = 60
+CACHE_CONTROL = 'no-cache'
 
+HATEOAS = False
+PAGINATION_DEFAULT = 10
+
+DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 # The DOMAIN dict explains which resources will be available and how they will
 # be accessible to the API consumer.

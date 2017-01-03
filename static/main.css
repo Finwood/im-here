@@ -1,40 +1,23 @@
 .feed-container {
-  display: inline-block; }
-
-#button {
-  float: right; }
+  display: inline-block;
+}
 
 .card {
   width: 300px;
   height: 75px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#card-template {
+  display: none;
+}
 
 p {
   display: inline-block;
   padding: 8px 7px 0 10px;
-  margin: 0; }
+  margin: 0;
+}
 
 .ip {
-  color: black; }
-
-.ball, .ball-red, .ball-yellow, .ball-green {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 0 20px 0 10px;
-  border-radius: 50%;
-  border-style: inset;
-  border-width: 1px;
-  border-style: inset;
-  border-color: black;
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.2); }
-
-.ball-red {
-  background-color: #dc143c; }
-
-.ball-yellow {
-  background-color: #d0cd09; }
-
-.ball-green {
-  background-color: #00d008; }
-
+  color: black;
+}
