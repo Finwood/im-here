@@ -3,12 +3,15 @@
 """Small and simple CLI for Demola-HERE.
 
 Usage:
-    client.py (submit | clear)
+    client.py [--host=HOST] (submit | clear)
     client.py --help
 
 Arguments:
     submit  Post sample data to API.
     clear   Clear entire dataset.
+
+Options:
+    --host=HOST  alternative host to send request to
 
 """
 
@@ -16,7 +19,10 @@ from docopt import docopt
 import requests
 import yaml
 
-ENDPOINT = 'http://demola-here.herokuapp.com/api/feedback/'
+HOST = 'http://demola-here.herokuapp.com'
+BASE_URL = '/api/feedback'
+
+ENDPOINT = HOST + BASE_URL
 
 
 def submit_sample():
@@ -39,6 +45,8 @@ def clear_remote():
 
 if __name__ == '__main__':
     args = docopt(__doc__)
+    if args['--host']:
+        ENDPOINT = args['--host'].rstrip('/') + BASE_URL
     if args['clear']:
         clear_remote()
     if args['submit']:

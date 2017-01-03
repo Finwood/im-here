@@ -13,6 +13,7 @@ app = Eve(__name__, settings=SETTINGS_PATH, static_url_path='')
 
 # the API is registered under the the URL prefix `/api`
 # let's use Eve as normal Flask application for serving statics
+@app.route('/static/', methods=['GET'], defaults={'path': 'index.html'})
 @app.route('/static/<path:path>', methods=['GET'])
 def send_static(path):
     return send_from_directory('static', path)
