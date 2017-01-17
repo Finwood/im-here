@@ -15,9 +15,13 @@ Options:
 
 """
 
-from docopt import docopt
-import requests
-import yaml
+try:
+    from docopt import docopt
+    import requests
+    import yaml
+except ImportError:
+    print("Requirements missing, install using "
+          "`pip install -r requirements-client.txt`")
 
 HOST = 'http://demola-here.herokuapp.com'
 BASE_URL = '/api/feedback'
