@@ -40,6 +40,12 @@ PAGINATION_DEFAULT = 10
 
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+
+# enable Operation Log for debuging purposes
+OPLOG = True
+OPLOG_AUDIT = True
+OPLOG_ENDPOINT = 'oplog'
+
 # The DOMAIN dict explains which resources will be available and how they will
 # be accessible to the API consumer.
 with open(ENDPOINTS_CONFIG_FILE) as f:
