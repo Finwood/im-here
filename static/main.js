@@ -28,11 +28,17 @@ function processRecord(rec) {
         $card.attr('id', rec._id);
         $card.find('p.ip').text(rec.user);
         $card.find('p.timestamp').text(rec._created);
-        $card.find('p.lat span').text(rec.lat);
-        $card.find('p.lon span').text(rec.lon);
+        $card.find('p.lat span').text(rec.lat.toFixed(3));
+        $card.find('p.lon span').text(rec.lon.toFixed(3));
         $card.data('time', rec._created);
 
-        $('.feed-container').prepend($card);
+        $top = $('.card:first-child');
+        $top.animate({
+            'margin-top': $top.height()
+        }, 300, function () {
+            $top.css('margin-top', 0);
+            $('.feed-container').prepend($card);
+        });
     }
 }
 
