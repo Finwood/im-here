@@ -4,7 +4,9 @@ function updateLog(animate) {
     if (animate === undefined) animate = true;
 
     var newestEntry = $('.feed-container div.card:not(#card-template)').first().data('time');
-    var data = newestEntry !== undefined ? {where: '{"_created": {"$gt": "' + newestEntry + '"}}'} : null;
+    var data = {sort: '-_created'};
+    if (newestEntry !== undefined)
+        data.where = '{"_created": {"$gt": "' + newestEntry + '"}}';
 
     $.get({
         url: "/api/feedback/",
@@ -12,7 +14,9 @@ function updateLog(animate) {
         data: data,
         success: function(data, status, xhr) {
             // console.log(data._items);
-            for (var item of data._items)
+            for (var item of data._items.sort(function(a, b) {
+                return a._created > b._created;
+            }))
                 processRecord(item, animate);
         },
         error: function(xhr, status, error) {
