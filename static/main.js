@@ -1,5 +1,7 @@
-function updateLog() {
-    console.log("updating logee...");
+function updateLog(animate) {
+    console.log("updating log...");
+
+    if (animate === undefined) animate = true;
 
     var newestEntry = $('.feed-container div.card:not(#card-template)').first().data('time');
     var data = newestEntry !== undefined ? {where: '{"_created": {"$gt": "' + newestEntry + '"}}'} : null;
@@ -11,7 +13,7 @@ function updateLog() {
         success: function(data, status, xhr) {
             // console.log(data._items);
             for (var item of data._items)
-                processRecord(item);
+                processRecord(item, animate);
         },
         error: function(xhr, status, error) {
             console.warn("AJAX came back with status " + status + ":\n" + error);
@@ -19,7 +21,7 @@ function updateLog() {
     });
 }
 
-function processRecord(rec) {
+function processRecord(rec, animate) {
     console.log(rec);
 
     if ($('#' + rec._id).length == 0) {
@@ -32,18 +34,21 @@ function processRecord(rec) {
         $card.find('p.lon span').text(rec.lon.toFixed(3));
         $card.data('time', rec._created);
 
-        $top = $('.card:first-child');
-        $top.animate({
-            'margin-top': $top.height()
-        }, 300, function () {
-            $top.css('margin-top', 0);
+        if (animate) {
+            $top = $('.card:first-child');
+            $top.animate({
+                'margin-top': $top.height()
+            }, 300, function () {
+                $top.css('margin-top', 0);
+                $('.feed-container').prepend($card);
+            });
+        } else {
             $('.feed-container').prepend($card);
-        });
+        }
     }
 }
 
 $(document).ready(function(){
-    updateLog();
+    updateLog(false);
     var updateTimer = window.setInterval(updateLog, 2000);
-    console.log("test");
 });
