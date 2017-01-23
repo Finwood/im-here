@@ -31,8 +31,8 @@ function processRecord(rec, animate) {
     if ($('#' + rec._id).length == 0) {
         var $card = $('#card-template').clone();
 
-        var lat = rec.lat.toFixed(4) + "° " + (rec.lat >= 0 ? "N" : "S"),
-            lon = rec.lon.toFixed(4) + "° " + (rec.lon >= 0 ? "E" : "W");
+        var lat = Math.abs(rec.lat).toFixed(4) + "° " + (rec.lat >= 0 ? "N" : "S"),
+            lon = Math.abs(rec.lon).toFixed(4) + "° " + (rec.lon >= 0 ? "E" : "W");
 
         $card.attr('id', rec._id);
         $card.find('.user').text(rec.user);
