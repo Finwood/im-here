@@ -57,5 +57,5 @@ function processRecord(rec, animate) {
 
 $(document).ready(function(){
     updateLog(false);
-    var updateTimer = window.setInterval(updateLog, 2000);
+    var updateTimer = window.setInterval(updateLog, 1000);
 });
